@@ -1,2 +1,11 @@
 ---
 # defaults file for postgresql
+pg_root_pw: postgres
+pg_postgres_pw: postgres
+pg_ticketmonster_pw: postgres
+pg_dbusers:
+  - { username: root, password: "{{ pg_root_pw|default('changeme') }}" }
+  - { username: postgres, password: "{{ pg_postgres_pw|default('changeme') }}" }
+  - { username: ticketmonster, password: "{{ pg_ticketmonster_pw|default('changeme') }}" }
+pg_dbs:
+  - { name: ticketmonster, owner: ticketmonster }
